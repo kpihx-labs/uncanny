@@ -20,7 +20,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install build tools
-        uses: astral-sh/setup-uv@v10
+        uses: astral-sh/setup-uv@v10.3.2
 
       - name: Build package
         run: make uv-build
