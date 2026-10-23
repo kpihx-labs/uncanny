@@ -1,16 +1,16 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.10.3,<0.11.0"]
+build-backend = "uv_build"
 
 [project]
-name = "uncanny"
-version = "0.1.0"
+name = "k-uncanny"
+version = "0.1.1"
 description = "CLI tool that detects AI-generated text with sentence-level scoring and multiple detection strategies"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
 authors = [{ name = "Frank Chan" }]
-urls = { Homepage = "https://github.com/dunkinfrunkin/uncanny", Repository = "https://github.com/dunkinfrunkin/uncanny", Issues = "https://github.com/dunkinfrunkin/uncanny/issues" }
+urls = { Homepage = "https://github.com/kpihx-labs/uncanny", Repository = "https://github.com/kpihx-labs/uncanny", Upstream = "https://github.com/dunkinfrunkin/uncanny", Issues = "https://github.com/kpihx-labs/uncanny/issues" }
 keywords = ["ai-detection", "gpt", "llm", "text-analysis", "cli"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -38,11 +38,8 @@ dev = [
 [project.scripts]
 uncanny = "uncanny.cli:app"
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/uncanny"]
-
-[tool.hatch.build.targets.wheel.force-include]
-"src/uncanny/web/static" = "uncanny/web/static"
+[tool.uv.build-backend]
+module-name = "uncanny"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

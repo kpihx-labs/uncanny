@@ -1,5 +1,21 @@
 # Uncanny
 
+## KpihX-Labs distribution
+
+This MIT-licensed adaptation retains Frank Chan's upstream implementation and history.
+Upstream: https://github.com/dunkinfrunkin/uncanny.
+The PyPI distribution is `k-uncanny`; the executable and Python import remain `uncanny`.
+Install with `uv tool install k-uncanny`, or use `make uv-link` from this checkout.
+Run `uncanny scan document.txt --format json` for structured output on stdout.
+Use `make check`, `make uv-build`, `make uv-publish`, and `make push`.
+`make puhsb` is an alias for `make push`, which pushes the current branch to both
+`github` and `gitlab`, never to `upstream`.
+This detector produces heuristic scores, not calibrated authorship probabilities.
+No score proves who wrote a document or whether plagiarism occurred.
+
+The remaining documentation describes the upstream tool. Install instructions naming
+the upstream PyPI package do not install this KpihX-Labs distribution.
+
 **Detect AI-generated text from your terminal.** Sentence-level scoring, multiple detection strategies, zero API calls. Runs locally, works offline.
 
 ```

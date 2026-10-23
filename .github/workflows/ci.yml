@@ -23,13 +23,15 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: pip install -e ".[dev]"
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
       - name: Run tests
-        run: pytest tests/ -v
+        run: make check
 
       - name: Run benchmarks
-        run: uncanny bench --compare
+        run: uv run uncanny bench --compare
 
   lint:
     runs-on: ubuntu-latest
@@ -42,7 +44,9 @@ jobs:
           python-version: "3.12"
 
       - name: Install
-        run: pip install -e ".[dev]"
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
       - name: Check imports
-        run: python -c "import uncanny; print(f'uncanny {uncanny.__version__}')"
+        run: uv run python -c "import uncanny; print(f'uncanny {uncanny.__version__}')"
