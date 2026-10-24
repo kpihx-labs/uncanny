@@ -73,7 +73,8 @@ def _get_analyzers(
             except ImportError:
                 console.print(
                     "[yellow]Perplexity analyzer requires ML dependencies.[/]\n"
-                    "Install with: [bold]pip install uncanny\\[ml][/]",
+                    "From a checkout: [bold]make uv-link-ml BACKEND=xpu[/] "
+                    "(or BACKEND=cpu).",
                     style="yellow",
                 )
                 raise typer.Exit(1)

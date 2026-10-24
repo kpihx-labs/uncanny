@@ -27,4 +27,4 @@ echo "  Press Ctrl+C to stop."
 echo ""
 
 cd "$SERVE_DIR"
-python3 -m http.server "$PORT"
+uv run --no-project python -m http.server "$PORT"

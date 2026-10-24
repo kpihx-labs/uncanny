@@ -18,10 +18,11 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.2
 
       - name: Install uncanny
-        run: pip install uncanny
+        run: uv tool install k-uncanny
 
       - name: Scan PR description
         run: |

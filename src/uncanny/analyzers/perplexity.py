@@ -4,7 +4,7 @@ Perplexity-based AI detection.
 Measures how "surprised" a language model is by the text.
 AI-generated text has low perplexity (predictable), human text has high perplexity.
 
-Requires: pip install uncanny[ml]  (torch + transformers)
+Requires ML dependencies: make install-ml BACKEND=xpu (or BACKEND=cpu).
 """
 
 from __future__ import annotations

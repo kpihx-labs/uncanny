@@ -5,17 +5,16 @@ Thanks for your interest in contributing! This document covers the basics.
 ## Development Setup
 
 ```bash
-git clone https://github.com/dunkinfrunkin/uncanny.git
+git clone git@github.com:kpihx-labs/uncanny.git
 cd uncanny
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -e ".[dev]"
+uv sync --extra dev
 ```
 
-Or with uv:
+For optional ML dependencies, choose exactly one hardware profile:
 
 ```bash
-uv sync --all-extras
+make install-ml BACKEND=xpu
+# Or BACKEND=cpu / BACKEND=cuda. Do not combine hardware extras.
 ```
 
 ## Running Tests

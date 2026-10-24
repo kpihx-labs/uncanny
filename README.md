@@ -13,8 +13,8 @@ Use `make check`, `make uv-build`, `make uv-publish`, and `make push`.
 This detector produces heuristic scores, not calibrated authorship probabilities.
 No score proves who wrote a document or whether plagiarism occurred.
 
-The remaining documentation describes the upstream tool. Install instructions naming
-the upstream PyPI package do not install this KpihX-Labs distribution.
+The remaining documentation retains the upstream detector description, with
+installation examples updated for this KpihX-Labs distribution.
 
 **Detect AI-generated text from your terminal.** Sentence-level scoring, multiple detection strategies, zero API calls. Runs locally, works offline.
 
@@ -85,20 +85,21 @@ Accuracy is enforced in CI. Every PR must pass `test_bench.py` which gates on:
 ## Install
 
 ```bash
-pip install uncanny
+uv tool install k-uncanny
 ```
 
-Or with Homebrew:
+For an editable source installation:
 
 ```bash
-brew tap dunkinfrunkin/tap
-brew install uncanny
+git clone git@github.com:kpihx-labs/uncanny.git
+cd uncanny
+make uv-link
 ```
 
 For ML-based analyzers (perplexity):
 
 ```bash
-pip install "uncanny[ml]"
+uv tool install 'k-uncanny[ml,xpu]' --index https://download.pytorch.org/whl/xpu
 ```
 
 ## Usage

@@ -5,31 +5,30 @@ title: Installation
 
 # Installation
 
-## Homebrew (recommended)
+## UV tool installation (recommended)
 
 ```bash
-brew tap dunkinfrunkin/tap
-brew install uncanny
+uv tool install k-uncanny
 ```
 
-## pip
+## Project environment
 
 ```bash
-pip install uncanny
+uv sync --extra dev
 ```
 
-## pipx (isolated install)
+## Editable isolated installation
 
 ```bash
-pipx install uncanny
+make uv-link
 ```
 
 ## From source
 
 ```bash
-git clone https://github.com/dunkinfrunkin/uncanny.git
+git clone git@github.com:kpihx-labs/uncanny.git
 cd uncanny
-pip install -e ".[dev]"
+make install
 ```
 
 ## Optional: ML Dependencies
@@ -37,7 +36,9 @@ pip install -e ".[dev]"
 For the perplexity analyzer (`--deep` mode), install ML dependencies:
 
 ```bash
-pip install "uncanny[ml]"
+uv tool install 'k-uncanny[ml,xpu]' --index https://download.pytorch.org/whl/xpu
+# For CPU, use [ml,cpu] with https://download.pytorch.org/whl/cpu.
+# From a checkout: make uv-link-ml BACKEND=xpu
 ```
 
 This downloads `torch` and `transformers` (~2GB). The perplexity analyzer uses GPT-2 small (~500MB model, downloaded on first use).

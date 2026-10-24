@@ -8,7 +8,8 @@ title: Perplexity
 Measures how "surprised" a language model is by the text. AI-generated text has low perplexity (the model predicted it easily). Human text has high perplexity (surprising word choices).
 
 :::note
-This analyzer requires optional ML dependencies: `pip install "uncanny[ml]"`
+This analyzer requires optional ML dependencies and an explicit hardware profile:
+`make uv-link-ml BACKEND=xpu` from the checkout (or `BACKEND=cpu`).
 :::
 
 ## How It Works
@@ -27,7 +28,7 @@ Perplexity measures how well a language model predicts the next token. Lower per
 ## Installation
 
 ```bash
-pip install "uncanny[ml]"
+uv tool install 'k-uncanny[ml,xpu]' --index https://download.pytorch.org/whl/xpu
 ```
 
 This installs:
@@ -51,6 +52,10 @@ The analyzer automatically detects:
 - **CUDA** (NVIDIA GPUs)
 - **MPS** (Apple Silicon)
 - **CPU** (fallback)
+
+The XPU profile selects Intel-compatible wheels; the upstream device resolver
+does not currently select XPU, so it may still execute on CPU. Wheel selection
+and actual inference-device support are separate checks.
 
 ## Strengths
 
