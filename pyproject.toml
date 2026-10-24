@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "k-uncanny"
-version = "0.1.2"
+version = "0.1.3"
 description = "CLI tool that detects AI-generated text with sentence-level scoring and multiple detection strategies"
 readme = "README.md"
 license = "MIT"

@@ -1,4 +1,9 @@
-# KpihX-Labs 0.1.2
+# KpihX-Labs 0.1.3
+
+- Normalize PDF extraction whitespace before sentence reconstruction so form feeds
+  and line wrapping cannot crash offset calculation.
+
+## 0.1.2
 
 - Ship the original MIT license in both wheel and sdist; verify its exact bytes in tests.
 - Exclude editor backup files from both archives.

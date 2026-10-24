@@ -12,7 +12,10 @@ _SPLIT_RE = re.compile(r"(?<=[.!?])\s+(?=[A-Z\"\'\u201c])")
 
 def split_sentences(text: str) -> list[tuple[str, int, int]]:
     """Split text into sentences, returning (text, start, end) tuples."""
-    text = text.strip()
+    # PDF extraction commonly inserts newlines, form feeds and uneven spacing
+    # between sentences. Normalize before splitting so reconstructed abbreviations
+    # retain searchable offsets in this analysis string.
+    text = re.sub(r"\s+", " ", text).strip()
     if not text:
         return []
 

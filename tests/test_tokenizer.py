@@ -31,3 +31,8 @@ def test_offsets():
     result = split_sentences(text)
     for sent_text, start, end in result:
         assert text[start:end] == sent_text
+
+
+def test_pdf_whitespace_preserves_sentence_offsets():
+    result = split_sentences("First sentence.\n\fSecond sentence.")
+    assert result == [("First sentence.", 0, 15), ("Second sentence.", 16, 32)]
